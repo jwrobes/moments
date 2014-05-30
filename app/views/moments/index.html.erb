@@ -7,3 +7,11 @@
 		<%= link_to 'Login', new_user_session_path %>
 	<% end %>
 </div>
+
+    <h1>TWILIO!!!</h1>
+
+    <%= form_tag('/twilio/send_sms', method: 'POST') do %>
+    <input type="text" placeholder="enter number" name="number">
+    <input type="text" placeholder="enter message here" name="message">
+    <button type="submit">Submit</button>
+    <% end %>

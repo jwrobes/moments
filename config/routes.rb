@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-	post "twilio/voice" =>'twilio#voice'  
+	post "twilio/voice" =>'twilio#voice'
+
+	post "twilio/send_sms" => "twilio#send_sms"  
 end
