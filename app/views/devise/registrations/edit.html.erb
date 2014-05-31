@@ -19,11 +19,7 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
-  <div><%= f.label :start_time %><br/>
-    <%= f.time_select :start_time %></div>
-
-   <div><%= f.label :end_time %><br/>
-    <%= f.time_select :end_time %></div> 
+ 
 
   <div><%= f.submit "Update" %></div>
 <% end %>
