@@ -33,7 +33,9 @@ gem 'twilio-ruby'
 
 gem 'sidekiq'
 
-gem 'sidetiq'
+gem 'clockwork'
+
+gem 'phony_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140531051601) do
     t.datetime "updated_at"
     t.integer  "start_time"
     t.integer  "end_time"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
