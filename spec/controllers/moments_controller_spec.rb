@@ -14,6 +14,5 @@ require 'spec_helper'
 					post :time,  {start_time: user.start_time, end_time: user.end_time}
 				}
 			end
-		end
 	end
 end
