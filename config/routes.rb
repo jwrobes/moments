@@ -1,6 +1,10 @@
+  require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  
+  	
   root to: 'moments#index'
+
+	mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users
 
