@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :moments
+
+  post "moments/time" => 'moments#time'
+
 	post "twilio/voice" =>'twilio#voice'
 
 	post "twilio/send_sms" => "twilio#send_sms"  

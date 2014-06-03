@@ -6,6 +6,9 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
+   <div><%= f.label :phone_number %><br />
+  <%= f.text_field :phone_number, autofocus: true %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -19,11 +22,7 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
-  <div><%= f.label :start_time %><br/>
-    <%= f.time_select :start_time %></div>
-
-   <div><%= f.label :end_time %><br/>
-    <%= f.time_select :end_time %></div> 
+ 
 
   <div><%= f.submit "Update" %></div>
 <% end %>
