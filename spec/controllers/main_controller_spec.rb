@@ -1,6 +1,6 @@
 require 'spec_helper'
 	
-	describe MomentsController do
+	describe MainController do
 
 		let(:user) { FactoryGirl.create :user}
     before(:each) do
