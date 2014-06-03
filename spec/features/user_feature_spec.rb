@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'the registration process' do
+describe 'the registration process', :type => :feature do
 	let(:user) {FactoryGirl.create :user}
 	it "goes to registration page" do
 		visit root_path
@@ -29,7 +29,7 @@ describe 'the registration process' do
 	end
 end
 
-describe 'the sign in process' do
+describe 'the sign in process', :type => :feature do
 	context 'can login with valid email and password' do
 		let!(:user) {FactoryGirl.create :user}
 		it "can sign in" do
