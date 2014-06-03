@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140531051601) do
     t.string   "message"
     t.date     "date"
     t.time     "time"
+    t.string   "phone_number"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

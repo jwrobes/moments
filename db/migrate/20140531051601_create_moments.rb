@@ -4,6 +4,7 @@ class CreateMoments < ActiveRecord::Migration
     	t.string :message
     	t.date :date
     	t.time :time
+    	t.string :phone_number
     	t.belongs_to :user
     	t.timestamps
     end
