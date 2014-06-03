@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   	
-  root to: 'moments#index'
+
 
 	mount Sidekiq::Web => '/sidekiq'
 
@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 	post "twilio/voice" =>'twilio#voice'
 
 	post "twilio/send_sms" => "twilio#send_sms"  
+
+	root to: 'main#index'
+
 end
