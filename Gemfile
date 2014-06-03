@@ -54,7 +54,7 @@ gem 'clockwork'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.99'
 end
 
 group :test do
