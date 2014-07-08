@@ -11,8 +11,19 @@ class User < ActiveRecord::Base
 
  	has_many :moments  
 
+<<<<<<< HEAD
+
+ 	def moments_start_time
+ 		start_time =  Time.parse("00:00").to_i + self.start_time
+  	Time.at(start_time)
+ 	end
+=======
+>>>>>>> master
 
 
+<<<<<<< HEAD
+  def generate_random_daily_moment_times
+=======
  	def build_moments_for_day
  		moment_times = self.daily_moment_times
     moment_data = {date: Date.today, message: "You need to take a moment", phone_number: self.phone_number}
@@ -28,6 +39,7 @@ class User < ActiveRecord::Base
   private
   
   def daily_moment_times
+>>>>>>> master
     start = self.moments_start_time
     window = self.moments_window_time
     moment_times = []
