@@ -2,12 +2,13 @@ class MomentsScheduler
 	include Sidekiq::Worker
 	include Sidetiq::Schedulable
 
-recurrence { daily.hour_of_day(7).minute_of_hour(49) }
+recurrence { hourly }
 
  def perform
  	puts "Yeah Baby build those moments"
- 	users = User.all
- 	users.each { |user| Moment.generate_moments_for_day(user) }
+ 	current_local_utc_midnight = Time.zone.now.hour
+ 	users_at_midnight = User.find_by_utc_local_midnight(current_local_utc_midnight)
+ 	users_at_midnight.each { |user| Moment.generate_moments_for_day(user) }
  end
 
 end
