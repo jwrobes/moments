@@ -41,6 +41,8 @@ gem 'phony_rails'
 
 gem 'clockwork'
 
+gem 'tzinfo'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
