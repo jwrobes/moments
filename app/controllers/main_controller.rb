@@ -1,4 +1,4 @@
-class MomentsController < ApplicationController
+class MainController < ApplicationController
   def index
 
   end
