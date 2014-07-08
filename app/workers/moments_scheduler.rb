@@ -3,7 +3,7 @@ class MomentsScheduler
 	include Sidetiq::Schedulable
 
 
-recurrence { minutely }
+recurrence { hourly }
 
  def perform
  	puts "Yeah Baby build those moments"
