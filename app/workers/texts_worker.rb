@@ -7,8 +7,6 @@ class TextsWorker
 
   
  def perform
-
- 		
  		account_sid = "AC90d2dcc4e6f5a0b4cf58dbb6008bbdc4"
 		auth_token = "a58cd6e9e716fa2446636f6a8b4087db"
  		

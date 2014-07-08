@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
  
   phony_normalize :phone_number, :default_country_code => 'US'
+  # validates :phone_number, presence: true
   validates_plausible_phone :phone_number, :presence => true
+ #  validates_plausible_phone :phone, :with => /\A\+\d+/
+	# validates_plausible_phone :phone, :without => /\A\+\d+/
+	# validates_plausible_phone :phone, :presence => true, :with => /\A\+\d+/
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -11,35 +15,19 @@ class User < ActiveRecord::Base
 
  	has_many :moments  
 
-<<<<<<< HEAD
 
  	def moments_start_time
- 		start_time =  Time.parse("00:00").to_i + self.start_time
-  	Time.at(start_time)
- 	end
-=======
->>>>>>> master
+ 		# start_time =  Time.zone.parse("00:00").to_i + Time.zone.parse(self.start_time)
+  	# Time.at(start_time)
+ 	  Time.zone.parse(self.start_time)
+  end
 
+  def moments_window_time
+    total_seconds = self.end_time - self.start_time
+    moment_window = total_seconds/5
+  end
 
-<<<<<<< HEAD
   def generate_random_daily_moment_times
-=======
- 	def build_moments_for_day
- 		moment_times = self.daily_moment_times
-    moment_data = {date: Date.today, message: "You need to take a moment", phone_number: self.phone_number}
-    moment_times.each do |time|
-       moment = Moment.new(moment_data)
-       moment.time = time
-       moment.save
-      self.moments << moment
-    end
-    puts self.moments
- 	end
-
-  private
-  
-  def daily_moment_times
->>>>>>> master
     start = self.moments_start_time
     window = self.moments_window_time
     moment_times = []
@@ -49,15 +37,4 @@ class User < ActiveRecord::Base
     end
     moment_times
   end
-
-  def moments_start_time
-    start_time =  Time.parse("00:00").to_i + self.start_time
-    Time.at(start_time)
-  end
-
-  def moments_window_time
-    total_seconds = self.end_time - self.start_time
-    moment_window = total_seconds/5
-  end
-
 end
