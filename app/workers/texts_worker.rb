@@ -3,7 +3,7 @@ class TextsWorker
 	include Sidetiq::Schedulable
 
 
- recurrence { minutely }
+ recurrence { hourly }
 
   
  def perform
@@ -28,13 +28,3 @@ class TextsWorker
 
 
 end
-
-=begin
-
-	Each night at midnight
-	cycle through each user
-	each user create 5 scheduled jobs
-		create new moment
-		
-
-=end
