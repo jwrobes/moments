@@ -23,7 +23,7 @@ class TextsWorker
  			puts "we're in the current moment"
 	 		client.account.messages.create({:to=>"+1"+"#{moment.phone_number}", :from =>"+15106296985", :body => moment.message})
 	 
- 		# end
+ 		end
   end
 
 

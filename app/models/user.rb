@@ -17,9 +17,10 @@ class User < ActiveRecord::Base
 
 
  	def moments_start_time
- 		start_time =  Time.parse("00:00").to_i + self.start_time
-  	Time.at(start_time)
- 	end
+ 		# start_time =  Time.zone.parse("00:00").to_i + Time.zone.parse(self.start_time)
+  	# Time.at(start_time)
+ 	  Time.zone.parse(self.start_time)
+  end
 
   def moments_window_time
     total_seconds = self.end_time - self.start_time
