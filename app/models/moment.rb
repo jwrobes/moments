@@ -7,6 +7,9 @@ belongs_to :user
 		daily_moment_times.each do |time|
 			moment = self.new({date: Date.today, message: "take a moment", phone_number: user.phone_number, time: time})
 			moment.save
+			puts "building another moment"
+			puts moment
+			puts "****************"
 			user.moments << moment
 		end
 	end
