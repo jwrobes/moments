@@ -1,6 +1,7 @@
 require 'tzinfo'
 
 class MomentsController < ApplicationController
+  
   def index
 
   end
@@ -11,7 +12,14 @@ class MomentsController < ApplicationController
   	current_user.start_time = params['start_time']
   	current_user.end_time = params['end_time']
   	current_user.save
+
+    users_with_scheduled_moments = User.users_with_moments_today
+    
+    if current_user.has_no_moments_today?(users_with_scheduled_moments)
+      Moment.generate_moments_for_day(current_giuser)
+    end 
   	redirect_to '/'
+  
   end
  
 end
