@@ -23,6 +23,15 @@ class User < ActiveRecord::Base
  	#   Time.zone.parse(self.start_time)
   # end
 
+
+  def self.users_with_moments_today
+    self.joins(:moments).where(moments: {date: Date.today}).distinct
+  end
+
+  def has_no_moments_today?(users)
+    !users.find_by_email(self.email)
+  end
+
   def moments_window_time
     total_seconds = Time.zone.parse(self.end_time) - Time.zone.parse(self.start_time)
     moment_window = total_seconds/5
