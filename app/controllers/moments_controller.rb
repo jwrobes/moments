@@ -16,7 +16,7 @@ class MomentsController < ApplicationController
     users_with_scheduled_moments = User.users_with_moments_today
     
     if current_user.has_no_moments_today?(users_with_scheduled_moments)
-      Moment.generate_moments_for_day(current_giuser)
+      Moment.generate_moments_for_day(current_user)
     end 
   	redirect_to '/'
   
