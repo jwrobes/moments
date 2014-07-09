@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
       moment_times << (utc_start_time + rand(1..window)).change(:sec => 0)
       utc_start_time = utc_start_time + window
     end
+    moment_times.reject! {|time| time < Time.zone.now }
     moment_times
   end
 end
