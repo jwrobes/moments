@@ -6,6 +6,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -14,8 +17,9 @@
 		<%= link_to 'Edit Profile', edit_user_registration_path %>
 		<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 	<% else %>
-		<%= link_to 'Sign up', new_user_registration_path %>
-		<%= link_to 'Login', new_user_session_path %>
+	  <button type="button col-md-6 col-md-offset-3" class="btn btn-primary btn-lg"><%= link_to 'Sign up', new_user_registration_path %></button>
+	   <button type="button col-md-6 col-md-offset-3" class="btn btn-primary btn-lg"><%= link_to 'Login', new_user_session_path %></button>
+		
 	<% end %>
 </div>
 <%= yield %>
