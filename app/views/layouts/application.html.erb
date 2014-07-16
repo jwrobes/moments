@@ -12,16 +12,15 @@
 </head>
 
 <body>
-<div class="sign_in" id= "fix-header">
+<div class="sign_in" id= "nav-menu">
 	<% if user_signed_in? %>
 		<%= link_to 'Edit Profile', edit_user_registration_path %>
 		<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 	<% else %>
 	  <button type="button col-md-6 col-md-offset-3" class="btn btn-primary btn-lg"><%= link_to 'Sign up', new_user_registration_path %></button>
 	   <button type="button col-md-6 col-md-offset-3" class="btn btn-primary btn-lg"><%= link_to 'Login', new_user_session_path %></button>
-		
 	<% end %>
 </div>
-<%= yield %>
+	<%= yield %>
 </body>
 </html>
