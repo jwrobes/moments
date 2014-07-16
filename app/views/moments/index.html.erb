@@ -3,30 +3,31 @@
   <div
     class="parallax-image-wrapper parallax-image-wrapper-100"
     style="background-image:url(<%= asset_path 'fastdark1.jpg' %>)"
-    data-anchor-target="#dragons + .gap"
+    data-anchor-target="#section-moves-fast + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-100"
       style="background-image:url(<%= asset_path 'fastdark1.jpg' %>)"
-      data-anchor-target="#dragons + .gap"
+      data-anchor-target="#section-moves-fast + .gap"
       data-bottom-top="transform: translate3d(0px, -80%, 0px);"
       data-top-bottom="transform: translate3d(0px, 80%, 0px);"
     ></div>
-    <!--the +/-80% translation can be adjusted to control the speed difference of the image-->
+ 
+
   </div>
 
   <div
     class="parallax-image-wrapper parallax-image-wrapper-100"
-    data-anchor-target="#bacons + .gap"
+    data-anchor-target="#section-distracted + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-100"
       style="background-image:url(<%= asset_path 'phonegaze.jpg' %>)"
-      data-anchor-target="#bacons + .gap"
+      data-anchor-target="#section-distracted + .gap"
       data-bottom-top="transform: translate3d(0px, -80%, 0px);"
       data-top-bottom="transform: translate3d(0px, 80%, 400px);"
     ></div>
@@ -34,28 +35,26 @@
 
   <div
     class="parallax-image-wrapper parallax-image-wrapper-100"
-    data-anchor-target="#kittens + .gap"
+    data-anchor-target="#section-change-life + .gap"
     data-bottom-top="transform:translate3d(0px, 200%, 0px)"
     data-top-bottom="transform:translate3d(0px, 0%, 0px)">
 
     <div
       class="parallax-image parallax-image-100"
      style="background-image:url(<%= asset_path 'Yo_sky.jpg' %>)"
-      data-anchor-target="#kittens + .gap"
+      data-anchor-target="#section-change-life + .gap"
       data-bottom-top="transform: translate3d(0px, -60%, 0px);"
       data-top-bottom="transform: translate3d(0px, 60%, 0px);"
     ></div>
   </div>
 
   <div id="skrollr-body">
-    <div class="first" id="dragons">
-
-    </div>
+    <div id="section-moves-fast"></div>
     <div class="gap gap-100" style="background-image:url(<%= asset_path 'fastdark1.jpg' %>);">
       <div class="row">
-          <div class="fast col-md-6 col-md-offset-3">
-            <h1>Life moves fast.</h1>
-            <h3>Let Momentus help you take a breath.</h3>
+          <div class="intro col-md-6 col-md-offset-3">
+            <h1 class = "jumbo">Life moves fast.</h1>
+            <h3>Let us help you take a breath.</h3>
             <br>
             <div class="center-block">
               <button type="button col-md-6 col-md-offset-3" class="btn btn-primary btn-lg">Sign Up</button>
@@ -63,17 +62,17 @@
           </div>
       </div>
     </div>
-    <div class="content" id="bacons">
-      <div class = "take5">
-        <h2>We are are always distracted.</h2>
-        <h1>Lost in Screens</h1>
+    <div class="content" id="section-distracted">
+      <div class = "box">
+        <h2 class ="setup" >We are are always distracted.</h2>
+        <h1 class="jumbo">Lost in Screens</h1>
       </div>
     </div>
     <div class="gap gap-100" style="background-image:url(<%= asset_path 'phonegaze.jpg' %>);"></div>
-    <div class="content" id="kittens">
-      <div class = "take6">
-        <h2>If just <strong>five</strong> times a day you remember <strong>stop</strong> and take a MOMENT.</h2>
-        <h1>You will change your life.</h1>
+    <div class="content" id="section-change-life">
+      <div class = "box">
+        <h2 class= "setup">If just <strong>five</strong> times a day you remember to <strong>stop</strong> and take a MOMENT.</h2>
+        <h1 class="jumbo">You will change your life.</h1>
       </div>
     </div>
     <div class="gap gap-100" style="background-image:url(<%= asset_path 'Yo_sky.jpg' %>);"></div>
@@ -86,8 +85,6 @@
             <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
            </div>
          </div>
-  
-
     </div>
   </div>
   <footer>
