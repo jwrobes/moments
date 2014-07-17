@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   
+	root to: 'landing_page#index'
+
 	mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users
@@ -14,6 +16,6 @@ Rails.application.routes.draw do
 
 	post "twilio/send_sms" => "twilio#send_sms"  
 
-	root to: 'moments#index'
+	
 
 end
