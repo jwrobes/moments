@@ -5,8 +5,8 @@ var Time = {
 		$('#time-setups').on('ajax:error', this.appendError);
 	},
 	appendTime: function (e,data) {
-		$('#start_time').replaceWith('<h3 class="start_time"> Selected Start Time: ' + data.start_time)
-		$('#end_time').replaceWith('<h3 class="end_time"> Selected End Time: ' + data.end_time)
+		$('#start_time').replaceWith('<h3 id="start_time"> Selected Start Time: ' + data.start_time)
+		$('#end_time').replaceWith('<h3 id="end_time"> Selected End Time: ' + data.end_time)
 	},
 	appendError: function (e,data) {
 		console.log(data)
