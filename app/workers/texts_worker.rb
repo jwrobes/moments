@@ -18,7 +18,6 @@ class TextsWorker
  		puts current_moments.size
  		puts current_moments.first
  		current_moments. each do |moment|
- 			puts "we're in the current moment"
 	 		client.account.messages.create({:to=>"+1"+"#{moment.phone_number}", :from =>ENV['TWILIO_PHONE_NUMBER'], :body => moment.message})
 	 
  		end
