@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 	mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users
-
-  resources :moments
-
-  post "moments/time" => 'moments#time'
+  
+  resources :users, only: [:show] do
+  	resources :moments
+  end	
+  
+  post "users/time" => 'users#time'
 
 	post "twilio/voice" =>'twilio#voice'
 
