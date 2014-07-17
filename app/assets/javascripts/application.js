@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function(){
+  Time.init()
+  setTimeZone.init()
+  skrollr.init({
+  smoothScrolling: false,
+  mobileDeceleration: 0.004
+});
+})
+
+
+var setTimeZone = {
+	init: function() {
+		var timeZone = jstz.determine();
+	document.cookie = 'jstz_time_zone='+timeZone.name()+';';
+	}
+}
