@@ -1,3 +1,5 @@
+require 'tzinfo'
+
 class Moment < ActiveRecord::Base
 
 belongs_to :user
@@ -5,7 +7,9 @@ belongs_to :user
 	def self.generate_moments_for_day(user)
 		daily_moment_times = user.generate_random_daily_moment_times
 		daily_moment_times.each do |time|
-			moment = self.new({date: Date.today, message: "take a moment", phone_number: user.phone_number, time: time})
+			local_time = TZInfo::Timezone.get(user.time_zone).utc_to_local(time)
+			formatted_local_time = local_time.strftime("%l:%M %p")
+			moment = self.new({date: Date.today, message: "take a moment now at #{formatted_local_time}", phone_number: user.phone_number, time: time})
 			moment.save
 			puts "building another moment"
 			puts moment
@@ -15,3 +19,4 @@ belongs_to :user
 	end
 
 end
+
