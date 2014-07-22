@@ -39,13 +39,21 @@ gem 'devise'
 
 gem 'twilio-ruby'
 
-gem 'sidekiq'
+gem "resque"#, require: "resque/server" 
 
-gem 'sidetiq'
+gem 'resque-scheduler', '~>2.0.0'  '',require: 'resque_scheduler/server'
+
+gem 'rufus-scheduler', '2.0.24'
+
+gem 'resque-web', require: 'resque_web'
+
+# gem 'sidekiq'
+
+# gem 'sidetiq'
 
 gem 'phony_rails'
 
-gem 'clockwork'
+# gem 'clockwork'
 
 gem 'tzinfo'
 

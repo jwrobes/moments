@@ -1,17 +1,15 @@
 class MomentsScheduler
-	include Sidekiq::Worker
-	include Sidetiq::Schedulable
-	# include Moments::Checker
 
-recurrence { hourly }
+@queue = :moments_scheduler
 
- def perform
- 	puts "Yeah Baby build those moments"
+ def self.perform
  	current_utc_local_midnight = Time.zone.now.hour
- 	
- 	users_at_midnight_locally = User.where("utc_local_midnight = ?", current_utc_local_midnight)
- 	puts users_at_midnight_locally
- 	users_at_midnight_locally.each { |user| Moment.generate_moments_for_day(user) }
+ 	users_at_or_after_midnight_locally = User.where("utc_local_midnight <= ?", current_utc_local_midnight)
+ 	users_with_moments_today = User.users_with_moments_today
+ 	users_missing_moments = users_at_or_after_midnight_locally - users_with_moments_today
+ 	users_missing_moments.each do |user| 
+ 		Moment.generate_moments_for_day(user) 
+ 		end
  end
 
 end
