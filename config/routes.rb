@@ -1,10 +1,10 @@
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
-  
-	root to: 'landing_page#index'
+  	
+  mount ResqueWeb::Engine => "/resque_web"
 
-	mount Sidekiq::Web => '/sidekiq'
+  ResqueWeb::Engine.eager_load!
+
+	root to: 'landing_page#index'
 
   devise_for :users
   
@@ -17,7 +17,5 @@ Rails.application.routes.draw do
 	post "twilio/voice" =>'twilio#voice'
 
 	post "twilio/send_sms" => "twilio#send_sms"  
-
-	
 
 end
