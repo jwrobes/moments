@@ -3,46 +3,34 @@ timeout 30
 preload_app true
 
 before_fork do |server, worker|
-   @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
+   @sidekiq_pid ||= spawn("bundle exec rake " + \
+  "resque:work QUEUES=send_texts_every_minute,schedules_moments_at_local_midnight")
 end
 
-after_fork do |server, worker|
-  Sidekiq.configure_client do |config|
-    config.redis = { :size => 1 }
-  end
-  Sidekiq.configure_server do |config|
-    config.redis = { :size => 5 }
-  end
-end
-
-
 # before_fork do |server, worker|
-#    @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
-# end
-
-
-# after_fork do |server, worker|
-#   Sidekiq.configure_client do |config|
-#     config.redis = { :size => 1 }
+#   # Replace with MongoDB or whatever
+#   if defined?(ActiveRecord::Base)
+#     ActiveRecord::Base.connection.disconnect!
+#     Rails.logger.info('Disconnected from ActiveRecord')
 #   end
-#   Sidekiq.configure_server do |config|
-#     config.redis = { :size => 5 }
+ 
+#   # If you are using Redis but not Resque, change this
+#   if defined?(Resque)
+#     Resque.redis.quit
+#     Rails.logger.info('Disconnected from Redis')
 #   end
 # end
-
-# before_fork do |server, worker|
-#   Signal.trap 'TERM' do
-#     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
-#     Process.kill 'QUIT', Process.pid
-#   end
-#   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-# end 
-
+ 
 # after_fork do |server, worker|
-#   Signal.trap 'TERM' do
-#     puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
-#   end
-
-#   defined?(ActiveRecord::Base) and
+#   # Replace with MongoDB or whatever
+#   if defined?(ActiveRecord::Base)
 #     ActiveRecord::Base.establish_connection
+#     Rails.logger.info('Connected to ActiveRecord')
+#   end
+ 
+#   # If you are using Redis but not Resque, change this
+#   if defined?(Resque)
+#     Resque.redis = ENV['REDIS_URI']
+#     Rails.logger.info('Connected to Redis')
+#   end
 # end
