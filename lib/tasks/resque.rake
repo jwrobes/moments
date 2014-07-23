@@ -8,7 +8,7 @@ namespace :resque do
     require 'resque_scheduler'
 
     # you probably already have this somewhere
-    Resque.redis =  ENV["REDISTOGO_URL"] || 'localhost:6379'
+    Resque.redis =  ENV["REDISTOGO_URL"] 
 
     # If you want to be able to dynamically change the schedule,
     # uncomment this line.  A dynamic schedule can be updated via the
