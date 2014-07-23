@@ -37,6 +37,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'foreman'
+
 gem 'twilio-ruby'
 
 gem "resque"#, require: "resque/server" 

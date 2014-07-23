@@ -1,0 +1,2 @@
+worker_1: QUEUE=* bundle exec rake resque:work
+worker_2: bundle exec rake resque:scheduler
