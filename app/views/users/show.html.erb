@@ -1,17 +1,14 @@
 <div class="nav-offset-container container">
-	<div class = "current_time">
-		<% if  current_user.start_time %>
-			<h3 id="start_time">Selected Start Time: <%= current_user.start_time%></h3>
-			<h3 id="end_time">Selected End Time: <%= current_user.end_time%></h3>
-		<% else %>
-			<h3>Please Select a Start and End Time</h3>
-		<% end %>
-	</div>
-	<div id= "time-setups">
+		<div id= "time-setups">
 		<%=form_tag('/users/time', method: 'POST', remote: true) do |f| %>
 	    <input type="time" name="start_time">
 	    <input type="time" name="end_time">
 	    <button type="submit">Submit</button>
 		<% end %>
-	 </div>   
+	 </div>  
+	<div class = "current_time">
+			<h3 id="start_time">Selected Start Time: <%= current_user.start_time%></h3>
+			<h3 id="end_time">Selected End Time: <%= current_user.end_time%></h3>
+	</div>
+ 
 </div>
