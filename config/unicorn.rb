@@ -3,7 +3,7 @@ timeout 30
 
 
 before_fork do |server, worker|
-   @reque_pid ||= spawn("bundle exec rake " + \
+   @resque_pid ||= spawn("bundle exec rake " + \
   "resque:work QUEUES=*")
 end
 
