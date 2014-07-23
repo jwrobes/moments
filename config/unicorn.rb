@@ -1,10 +1,10 @@
 worker_processes 3
 timeout 30
-preload_app true
+
 
 before_fork do |server, worker|
-   @sidekiq_pid ||= spawn("bundle exec rake " + \
-  "resque:work QUEUES=send_texts_every_minute,schedules_moments_at_local_midnight")
+   @reque_pid ||= spawn("bundle exec rake " + \
+  "resque:work QUEUES=*")
 end
 
 # before_fork do |server, worker|
