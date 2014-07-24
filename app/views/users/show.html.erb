@@ -1,14 +1,12 @@
 <div class="nav-offset-container container">
-		<div id= "time-setups">
+		<div class="current_time" id= "time-setups">
 		<%=form_tag('/users/time', method: 'POST', remote: true) do |f| %>
-	    <input type="time" name="start_time">
-	    <input type="time" name="end_time">
+		<h3 id="start_time">Start Time: <%= current_user.start_time%></h3>
+		 <fieldset class="fieldset fieldset--demo"><div class="fieldset__wrapper"><input class="start_time" name="start_time" type="text" placeholder="Start Time&hellip;"></div></fieldset>
+		 <h3 id="end_time">End Time: <%= current_user.end_time%></h3>
+	 	 <fieldset class="fieldset fieldset--demo"><div class="fieldset__wrapper"><input class="end_time" name="end_time" type="text" placeholder="End Time&hellip;"></div></fieldset>
 	    <button type="submit">Submit</button>
 		<% end %>
 	 </div>  
-	<div class = "current_time">
-			<h3 id="start_time">Selected Start Time: <%= current_user.start_time%></h3>
-			<h3 id="end_time">Selected End Time: <%= current_user.end_time%></h3>
-	</div>
- 
-</div>
+ </div>
+
