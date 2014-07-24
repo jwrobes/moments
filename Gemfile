@@ -39,6 +39,8 @@ gem 'devise'
 
 gem 'foreman'
 
+gem 'pickadate-rails'
+
 gem 'twilio-ruby'
 
 gem "resque"#, require: "resque/server" 

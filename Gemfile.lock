@@ -102,6 +102,8 @@ GEM
       activesupport (>= 3.0)
       countries (>= 0.8.2)
       phony (~> 2.1)
+    pickadate-rails (3.5.2.0)
+      railties (>= 3.1.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-protection (1.5.3)
@@ -247,6 +249,7 @@ DEPENDENCIES
   jquery-rails
   pg
   phony_rails
+  pickadate-rails
   rails (= 4.1.0)
   rails_12factor
   redis

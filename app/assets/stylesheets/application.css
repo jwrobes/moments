@@ -12,4 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require pickadate/default
+
+*= require pickadate/default.time
  */
