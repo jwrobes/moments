@@ -5,7 +5,7 @@ class TextsWorker
  def self.perform
 		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 
-		current_moments = Moment.where("time = ?", Time.zone.now.change(:sec => 0))
+		current_moments = Moment.where("time = ? AND sent = ?", Time.zone.now.change(:sec => 0),false)
 		missed_moments = Moment.where("time < ? AND sent = ?", Time.zone.now.change(:sec => 0),false)
  		moments_to_send = current_moments + missed_moments
  		moments_to_send.uniq! { |moment| moment.user_id }
