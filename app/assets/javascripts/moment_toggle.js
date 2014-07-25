@@ -1,34 +1,9 @@
-
-
-// var switcher = {
-// 	init: function() {
-// 		var checkbox = document.getElementById('cb')
-// 		var test = new ToggleSwitch(checkbox, 'ON', 'OFF');
-// 		if (checkbox.classList.contains("on")) {
-// 			test.on()
-// 			}
-// 		},
-// 		switchOff: function() {
-// 			test.off()
-// 		},
-// 		switchOn: function() {
-// 			test.on()
-// 		}
-// 	}
-
-
-
-var userToggle = {
-	init: function(){
-		$('.moments_toggle').on('click','.toggle',this.toggleMoments)
+var momentsActivateController = {
+	toggleMomentsParams: {
+		url: '/users/toggle',
+		type: 'PUT'
 	},
-	toggleMoments: function (event){
-		event.preventDefault();
-		$.ajax({
-			url: '/users/toggle',
-			type: 'PUT'
-		})
-		.success(function(data){
+	activateToggleDone: function () {
 			console.log(data.moments_on)
 			if (data.moments_on) {
 				console.log("turning it on")
@@ -42,7 +17,17 @@ var userToggle = {
 				$('#cb').addClass('off')
 				$momentSwitch.off()
 			}
-		})
+	}
+}
+
+var userToggle = {
+	init: function(){
+		$('.moments_toggle').on('click','.toggle',this.toggleMoments)
+	},
+	toggleMoments: function (event){
+		event.preventDefault();
+		$.ajax(momentsActivateController.toggleMomentsParams)
+		.success(function(data){momentsActivateController.activateToggleDone})
 		.error(function(data){
 		})
 	}
