@@ -12,11 +12,15 @@ class UsersController < ApplicationController
 
 
   def toggle
+    puts "current user starts at #{current_user.moments_on}"
     current_user.moments_on = !current_user.moments_on
+    puts "current user is receiving moments: #{current_user.moments_on}"
     current_user.save
     if (current_user.moments_on && current_user.missing_moments_today?)
+      puts "making moments for user from toggle"
       Moment.generate_moments_for_day(current_user)
     else  
+      puts "destroying all unsent momvents"
       current_user.today_moments_not_sent.destroy_all
     end 
     render json: {moments_on: current_user.moments_on}

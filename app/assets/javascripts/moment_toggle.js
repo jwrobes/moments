@@ -29,12 +29,15 @@ var userToggle = {
 			type: 'PUT'
 		})
 		.success(function(data){
+			console.log(data.moments_on)
 			if (data.moments_on) {
+				console.log("turning it on")
 				$('#cb').removeClass('off')
 				$('#cb').addClass('on')
 				$momentSwitch.on()
 			}
 			else {
+				console.log("turning it off")
 				$('#cb').removeClass('on')
 				$('#cb').addClass('off')
 				$momentSwitch.off()
