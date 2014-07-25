@@ -10,8 +10,10 @@ class TextsWorker
  		moments_to_send = current_moments + missed_moments
  		moments_to_send.uniq! { |moment| moment.user_id }
  		moments_to_send.each do |moment|
-	 		client.account.messages.create({:to=>"+1"+"#{moment.phone_number}", :from =>ENV['TWILIO_PHONE_NUMBER'], :body => moment.message})
-	 		moment.update(sent: true)
+ 			moment.update(sent: true) 		
+ 		end
+ 		moments_to_send.each do |moment| 
+ 			client.account.messages.create({:to=>"+1"+"#{moment.phone_number}", :from =>ENV['TWILIO_PHONE_NUMBER'], :body => moment.message})
  		end
   end
 
