@@ -8,5 +8,16 @@
 	    <button type="submit">Submit</button>
 		<% end %>
 	 </div>  
+
+
+	<div class ="moments_toggle">
+	<br>
+	<% if current_user.moments_on %>
+			<input  class="toggle blue small on" id="cb" type="checkbox" />
+	<% else %>
+		<input class="toggle blue small off" id="cb" type="checkbox" />
+	<% end %>
+	</div>
+
  </div>
 

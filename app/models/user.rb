@@ -17,13 +17,6 @@ class User < ActiveRecord::Base
  # attr_accessible :time_zone, :utc_local_midnight
  	has_many :moments  
 
- 	# def moments_start_time
- 	# 	# start_time =  Time.zone.parse("00:00").to_i + Time.zone.parse(self.start_time)
-  # 	# Time.at(start_time)
- 	#   Time.zone.parse(self.start_time)
-  # end
-
-
   def self.users_with_moments_today
     self.joins(:moments).where(moments: {date: Date.today}).distinct
   end
@@ -32,9 +25,17 @@ class User < ActiveRecord::Base
     !users.find_by_email(self.email)
   end
 
+  def missing_moments_today?
+    self.moments.where("date =?", Date.today).count < 5
+  end
+
   def moments_window_time
     total_seconds = Time.zone.parse(self.end_time) - Time.zone.parse(self.start_time)
     moment_window = total_seconds/5
+  end
+
+  def today_moments_not_sent
+    self.moments.where("date = ? AND sent = ?",Date.today, false)
   end
 
   def generate_random_daily_moment_times

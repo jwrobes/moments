@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   post "users/time" => 'users#time'
 
+  put 'users/toggle' => 'users#toggle'
+
 	post "twilio/voice" =>'twilio#voice'
 
 	post "twilio/send_sms" => "twilio#send_sms"  

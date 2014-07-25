@@ -15,4 +15,5 @@
  *= require pickadate/default
 
 *= require pickadate/default.time
+*= require toggleswitch.css.scss
  */

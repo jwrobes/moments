@@ -6,12 +6,23 @@ class UsersController < ApplicationController
 
   end
 
-  def show
+  def showuser
     @user = current_user
   end
 
+
+  def toggle
+    current_user.moments_on = !current_user.moments_on
+    current_user.save
+    if (current_user.moments_on && current_user.missing_moments_today?)
+      Moment.generate_moments_for_day(current_user)
+    else  
+      current_user.today_moments_not_sent.destroy_all
+    end 
+    render json: {moments_on: current_user.moments_on}
+  end
+
   def time
-    puts "getting to ajax"
     current_user.time_zone = cookies["jstz_time_zone"]
     current_user.utc_local_midnight = TZInfo::Timezone.get(current_user.time_zone).local_to_utc(Time.parse("00:00")).hour
     current_user.start_time = params['start_time']
