@@ -18,14 +18,21 @@
 
 //= require pickadate/picker 
 //= require pickadate/picker.time 
+//= require ToggleSwitch.js
 
 $(document).ready(function(){
   Time.init()
   setTimeZone.init()
+  // switcher.init()
+  userToggle.init()
   skrollr.init({
   smoothScrolling: false,
   mobileDeceleration: 0.004
-});
+ });
+	$momentSwitch = new ToggleSwitch(document.getElementById('cb'), 'ON', 'OFF');
+	if (document.getElementById('cb').classList.contains("on")) {
+		$momentSwitch.on()
+	}
 })
 
 
