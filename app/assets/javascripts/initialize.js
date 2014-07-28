@@ -1,6 +1,9 @@
-$(document).ready(function(){
-  Time.init()
+
+
+var initialize = function() {
+	  Time.init()
   setTimeZone.init()
+  Message.init()
   // switcher.init()
   userToggle.init()
   skrollr.init({
@@ -11,8 +14,7 @@ $(document).ready(function(){
 	if (document.getElementById('cb').classList.contains("on")) {
 		$momentSwitch.on()
 	}
-})
-
+}
 
 var setTimeZone = {
 	init: function() {
@@ -20,3 +22,6 @@ var setTimeZone = {
 	document.cookie = 'jstz_time_zone='+timeZone.name()+';';
 	}
 }
+
+$(document).ready(initialize)
+$(document).on('page:load',initialize)
