@@ -19,4 +19,3 @@
 //= require pickadate/picker 
 //= require pickadate/picker.time 
 //= require ToggleSwitch.js
-
