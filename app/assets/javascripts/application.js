@@ -25,6 +25,7 @@ $(document).ready(function(){
   setTimeZone.init()
   // switcher.init()
   userToggle.init()
+  Message.init()
   skrollr.init({
   smoothScrolling: false,
   mobileDeceleration: 0.004
