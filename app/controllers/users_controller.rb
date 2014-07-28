@@ -10,6 +10,12 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+ def message
+    puts params
+    current_user.message = params[:message_body]
+    current_user.save
+    render json: {message: current_user.message}
+  end
 
   def toggle
     puts "current user starts at #{current_user.moments_on}"
