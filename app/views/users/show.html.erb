@@ -9,6 +9,12 @@
 		<% end %>
 	 </div>  
 
+<div class="message_input">
+	<%=form_tag('users/message', method: 'POST', remote: true) do |f| %>
+		<input type="text" name="message_body" placeholdr="Moment Message">
+	<% end %>
+</div>	 
+
 
 	<div class ="moments_toggle">
 	<br>
