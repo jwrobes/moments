@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       Moment.generate_moments_for_day(current_user)
     else  
       puts "destroying all unsent momvents"
-      current_user.today_moments_not_sent.destroy_all
+      MomentsNotSentQuery.new(current_user).search.destroy_all
     end 
     render json: {moments_on: current_user.moments_on}
   end

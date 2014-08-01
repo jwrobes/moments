@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     moment_window = total_seconds/5
   end
 
-  def today_moments_not_sent
-    self.moments.where("date = ? AND sent = ?",Date.today, false)
-  end
-
   def generate_random_daily_moment_times
     tc = TimeConversion.new(self)
     utc_start_time = tc.local_start_time_in_utc
