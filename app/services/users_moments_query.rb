@@ -3,8 +3,10 @@ class UsersMomentsQuery
 
   def self.missing_moments_today
     moments_today = Moment.all.includes(:user).select do |moment|
-    	tc = TimeConversion.new(moment.user)
-    	tc.local_date_now == moment.date	
+      if moment.user 
+        tc = TimeConversion.new(moment.user)
+    	   tc.local_date_now == moment.date
+      end	
     end
     self.with_moments_on - moments_today.map { |moment| moment.user }.uniq
   end
