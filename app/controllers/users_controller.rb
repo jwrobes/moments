@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def toggle
-    puts "current user starts at #{current_user.moments_on}"
+    puts "current user starts at #{current_user}"
     current_user.moments_on = !current_user.moments_on
     puts "current user is receiving moments: #{current_user.moments_on}"
     current_user.save
