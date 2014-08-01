@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728054235) do
+ActiveRecord::Schema.define(version: 20140730161007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20140728054235) do
   create_table "moments", force: true do |t|
     t.string   "message"
     t.date     "date"
-    t.time     "time"
     t.string   "phone_number"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sent",         default: false
+    t.boolean  "sent",           default: false
+    t.string   "user_time_zone"
+    t.datetime "time"
   end
 
   create_table "users", force: true do |t|

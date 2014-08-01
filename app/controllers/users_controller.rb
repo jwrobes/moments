@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
  def message
-    puts params
     current_user.message = params[:message_body]
     current_user.save
     render json: {message: current_user.message}
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
     current_user.moments_on = !current_user.moments_on
     puts "current user is receiving moments: #{current_user.moments_on}"
     current_user.save
-    if (current_user.moments_on && current_user.missing_moments_today?)
+    if (current_user.moments_on && UserQuery.new(current_user).missing_moments?)
       puts "making moments for user from toggle"
       Moment.generate_moments_for_day(current_user)
     else  
@@ -39,8 +38,7 @@ class UsersController < ApplicationController
     current_user.end_time = params['end_time']
       if current_user.save
         puts "in the save ajax"
-        users_with_scheduled_moments = User.users_with_moments_today
-        if current_user.has_no_moments_today?(users_with_scheduled_moments)
+        if UserQuery.new(current_user).no_moments_today?
           Moment.generate_moments_for_day(current_user)
         end 
         render json: {start_time: current_user.start_time, end_time: current_user.end_time}.to_json
