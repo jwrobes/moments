@@ -1,3 +1,4 @@
+require 'pry'
 require 'tzinfo'
 
 class User < ActiveRecord::Base
@@ -17,20 +18,8 @@ class User < ActiveRecord::Base
  # attr_accessible :time_zone, :utc_local_midnight
  	has_many :moments  
 
-  def self.users_with_moments_today
-    self.joins(:moments).where(moments: {date: Date.today}).distinct
-  end
-
-  def has_no_moments_today?(users)
-    !users.find_by_email(self.email)
-  end
-
-  def missing_moments_today?
-    self.moments.where("date =?", Date.today).count < 5
-  end
-
-  def moments_window_time
-    total_seconds = Time.zone.parse(self.end_time) - Time.zone.parse(self.start_time)
+  def moments_window_time(start_time, end_time)
+    total_seconds =  end_time - start_time
     moment_window = total_seconds/5
   end
 
@@ -39,8 +28,10 @@ class User < ActiveRecord::Base
   end
 
   def generate_random_daily_moment_times
-    utc_start_time = TZInfo::Timezone.get(self.time_zone).local_to_utc(Time.parse(self.start_time))
-    window = self.moments_window_time
+    tc = TimeConversion.new(self)
+    utc_start_time = tc.local_start_time_in_utc
+    utc_end_time = tc.local_end_time_in_utc
+    window = self.moments_window_time(utc_start_time, utc_end_time)
     moment_times = []
     (1..5).each do 
       moment_times << (utc_start_time + rand(1..window)).change(:sec => 0)

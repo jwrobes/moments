@@ -14,7 +14,7 @@ send_texts_every_minute:
 
 
 schedules_moments_at_local_midnight:
-  cron: "0,30 * * * *"
+  cron: "15,45 * * * *"
   # you can use rufus-scheduler "every" syntax in place of cron if you prefer
   # every: 1h
   # By default the job name (hash key) will be taken as worker class name.
