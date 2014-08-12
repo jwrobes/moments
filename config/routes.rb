@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 	root to: 'landing_page#index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'registrations'}
   
   resources :users, only: [:show] do
   	resources :moments
