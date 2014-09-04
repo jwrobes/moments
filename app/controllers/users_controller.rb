@@ -1,3 +1,4 @@
+require 'pry'
 require 'tzinfo'
 
 class UsersController < ApplicationController
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+  @user = current_user
   end
 
  def message
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def toggle
-    puts "current user starts at #{current_user}"
+    puts "current user starts at #{current_user.moments_on}"
     current_user.moments_on = !current_user.moments_on
     puts "current user is receiving moments: #{current_user.moments_on}"
     current_user.save
@@ -41,9 +42,9 @@ class UsersController < ApplicationController
         if UserQuery.new(current_user).no_moments_today?
           Moment.generate_moments_for_day(current_user)
         end 
-        render json: {start_time: current_user.start_time, end_time: current_user.end_time}.to_json
+        render json: {success: true, start_time: current_user.start_time, end_time: current_user.end_time}.to_json
       else 
-        render json: "Error".to_json
+        render json: {success: false, errors: current_user.errors.messages, start_time: current_user.start_time, end_time: current_user.end_time }
       end  
   end
  

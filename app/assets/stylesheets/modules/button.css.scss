@@ -1,0 +1,38 @@
+@import "globals/all";
+
+.button {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+}
+
+.button-highlight {
+	color: #fff;
+	background-color: $highlight-color;
+	border-color: $highlight-border-color;
+}
+
+.button-highlight:hover {
+	color: #fff;
+	background-color: $highlight-hover-color;
+	border-color: $highlight-hover-border-color;
+}
+
+.button-large {
+	padding: 10px 10px !important;
+	width: 240px;
+	font-size: 20px;
+	border-radius: 6px;
+	padding: 10px 35px;
+	font-size: 18px;
+	line-height: 1.2;
+	border-radius: 500px;
+	padding: 10px 35px 8px;
+	letter-spacing: 1.2px;
+}
+

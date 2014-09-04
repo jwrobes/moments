@@ -6,7 +6,7 @@ var Message = {
 		$('#message_input').on('ajax:error', this.appendError);
 	},
 	appendMessage: function (e,data) {
-		$('#message_body').html(data.message)
+		$('#message-text').html(data.message)
 	},
 	appendError: function (e,data) {
 		debugger

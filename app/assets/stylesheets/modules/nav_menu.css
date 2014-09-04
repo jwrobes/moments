@@ -1,0 +1,33 @@
+@import "globals/all";
+
+.nav-offset-container {
+  margin-top: 50px;
+}
+
+.navbar-custom {
+    background-color: rgba(0,0,0,0.75);
+    color:#ffffff;
+    border-radius:0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    color: white;
+    font-size: 1.5em;
+}
+
+.navbar-highlight {
+    color: #D35400 !important;
+    font-size: 1.2em;
+}
+
+.navbar-highlight:hover {
+    color: #F9690E !important;
+}
+
+@media(max-width:767px){
+  .profile > i {
+    display: none;
+ }
+}
+
