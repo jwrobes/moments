@@ -1,0 +1,23 @@
+		<div class="form" id= "time-setups">
+			<%=form_tag('/users/time', method: 'POST', remote: true) do |f| %>
+
+		<% if current_user.start_time == nil %>
+			<label for="start_time" class="form-label form-time-label">When do you want to start your day?</label>
+		<% else %>
+			<label for="start_time" class="form-label form-time-label">Your moments will start at <span class="time-form-highlight" id="start_time"><%= current_user.start_time%></span> </label>
+		<% end %>		
+		<br>
+		 <p class="user-start_time-errors user-errors"></p>
+			 <fieldset class="fieldset fieldset--demo"><div class="fieldset__wrapper"><input class="start_time" name="start_time" type="text" placeholder="Set Start Time&hellip;"></div></fieldset>
+		<% if current_user.end_time == nil %>
+			<label for="end_time" class="form-label form-time-label">When do you want to start your day?</label>
+		<% else %>
+			<label for="end_time" class="form-label form-time-label">Your moments will end at <span class="time-form-highlight" id="end_time"><%= current_user.end_time%></span> </label>
+		<% end %>		
+		<br>	 
+		<p class="user-end_time-errors user-errors"></p>
+		 	 <fieldset class="fieldset fieldset--demo"><div class="fieldset__wrapper"><input class="end_time" name="end_time" type="text" placeholder="Set Start Time&hellip;"></div></fieldset>
+		 	 <br>
+		    <button type="submit" class="button button-large button-highlight">SET</button>
+			<% end %>
+	 </div>  

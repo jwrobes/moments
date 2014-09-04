@@ -1,0 +1,12 @@
+<div class="sign-up-overlay is-hidden">
+	<div class="sign-up">
+    <h3><%= link_to 'Take A Moment', root_path, class: "logo" %></h3>
+		<section class="signup-select is-hidden">
+      <div class="unobtrusive-flash-container"></div>
+      <%= render partial: 'new_user'%>
+	  </section>
+    <section class="signin-select">
+      <%= render partial: 'current_user'%>
+    </section>
+  </div>
+</div>

@@ -1,19 +1,22 @@
 
 
 var initialize = function() {
-	  Time.init()
+	Time.init()
   setTimeZone.init()
   Message.init()
+  Signin.init()
   // switcher.init()
-  userToggle.init()
+ 
   skrollr.init({
   smoothScrolling: false,
   mobileDeceleration: 0.004
  });
-	$momentSwitch = new ToggleSwitch(document.getElementById('cb'), 'ON', 'OFF');
-	if (document.getElementById('cb').classList.contains("on")) {
-		$momentSwitch.on()
-	}
+
+  userToggle.init()
+	// $momentSwitch = new ToggleSwitch(document.getElementById('cb'), 'ON', 'OFF');
+	// if (document.getElementById('cb').classList.contains("on")) {
+	// 	$momentSwitch.on()
+	// }
 }
 
 var setTimeZone = {

@@ -1,0 +1,15 @@
+
+
+.user-profile > i { 
+	padding-right: 7px;
+}
+
+.user-errors {
+	display: none;
+}
+
+@media(max-width:767px){
+  .user-profile > i {
+    display: none;
+ }
+}

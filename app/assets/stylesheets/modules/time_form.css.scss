@@ -1,0 +1,32 @@
+@import "globals/all";
+
+.time-form-highlight {
+	color: $highlight-color;
+	font-size: 1.4em;
+	font-weight: bold;
+
+}
+.form-label {
+	color: $dark-gray;
+}
+
+.form-time-label {
+	color: $dark-gray;
+}
+
+.user-start_time-errors, .user-end_time-errors {
+	margin: 0px 0px 8px 0px;
+	display: none;
+}
+
+@media screen and (max-width: 480px) {
+
+.form-label {
+	font-size: 1.2em;
+}
+
+.form {
+	text-align: center;
+}
+
+}

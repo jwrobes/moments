@@ -10,12 +10,16 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
+//= require jstz.js
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
 
 //= require pickadate/picker 
 //= require pickadate/picker.time 
 //= require ToggleSwitch.js
+//= require OutsideEvents.js
+//= require Skrollr.js
+//= require Toggle.js

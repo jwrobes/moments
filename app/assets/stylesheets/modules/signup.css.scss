@@ -1,0 +1,52 @@
+.sign-up-overlay {
+	background-color: rgba(0,0,0,0.4);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	white-space: nowrap;
+	z-index: 999999;
+
+}
+
+/*this is what actually gets the thing to center*/
+
+.sign-up-overlay::before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em;
+}
+
+.sign-up-overlay .sign-up {
+	display: inline-block;
+	margin: 0 auto;
+	vertical-align: middle;
+	white-space: normal;
+	width: 320px;
+}
+
+.sign-up {
+	background-image: -webkit-linear-gradient(top,#fff 0,#dfe0e6 100%);
+	background-image: linear-gradient(to bottom,#fff 0,#dfe0e6 100%);
+	background-repeat: repeat-x;
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffdfe0e6',GradientType=0);*/
+	background-color: #dfe0e6;
+	background: #dfe0e6;
+	color: #88898c;
+	width: 320px;
+	position: relative;
+	vertical-align: middle;
+}
+
+.sign-up-form-container {
+	margin: 0 auto;
+	width: 260px;
+}
+
+.user-errors {
+	color: #bd3200;
+}
