@@ -1,4 +1,21 @@
-@import "globals/all";
+$green: #81b900;
+$bright-green: #96d600;
+$light-gray: #F2F1EF;
+$dark-gray: #88898c;
+$thunderbird-red: #D91E18;
+$thunderbird-bright-red: #FF0000;
+$orange: #F9690E;
+$dark-orange: #D35400;
+
+// Theme Colors
+
+$highlight-color: $dark-orange;
+$highlight-border-color: $dark-orange;
+$highlight-hover-color: $orange;
+$highlight-hover-border-color: $orange;
+$form-background-color: whitesmoke;
+$form-border-color: $light-gray;
+//
 
 .nav-offset-container {
   margin-top: 50px;
