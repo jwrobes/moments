@@ -90,6 +90,15 @@ $form-border-color: $light-gray;
 
 }
 
+@media only screen and (min-width :321px) and (max-width :480px) {
+
+	.form-time-label {
+		font-size: 1.1em;
+		padding: 4px;
+	}
+
+}
+
 @media only screen
 and (min-device-width : 320px) 
 and (max-device-width : 480px) { 
@@ -101,7 +110,12 @@ and (max-device-width : 480px) {
 	}
 
 	.form-label {
-		font-size: 1.1em;
+		font-size: 1.0em;
+		padding: 4px;
+	}
+
+	.form-time-label {
+		font-size: 0.9em;
 		padding: 4px;
 	}
 
