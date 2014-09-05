@@ -82,25 +82,39 @@ $form-border-color: $light-gray;
 }
 
 @media only screen
-and (min-device-width : 322px) 
+and (min-device-width : 320px) 
 and (max-device-width : 480px) { 
 
+	.form {
+		margin: 2px 3px;
+	}
+
+	.message-form {
+		margin-left: 2px;
+		margin-right: 2px;
+		padding: 3px 0px 3px 0px;
+	}
+
 	.form-message-label {
-		font-size: 1.1em;
+		font-size: 1.0em;
 	}
 
 	.message-form {
 		border-bottom: 2px !important;
-		min-height: 270px;
+		min-height: 200px;
 	}
 
 	.message-container {
-		min-height: 130px;
-		font-size: 1.3em;
+		min-height: 60px;
+		font-size: 1.0em;
 	}
 
 	.message_input > input {
 		margin: 0;
+	}
+
+	.button {
+		margin-bottom: 2px 0 2px 0 !important;
 	}
  
 } 

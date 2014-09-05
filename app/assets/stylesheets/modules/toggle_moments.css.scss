@@ -3,7 +3,7 @@
 	display: none;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 480px) {
 	
 	.form-toggle-moments {
 		text-align: center;
@@ -11,7 +11,7 @@
 
 	.form-toggle-moments > h3 {
 		display: inline-block;
-		margin: 8px;
+		margin: 4px;
 
 	}
 
