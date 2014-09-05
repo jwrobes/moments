@@ -5,14 +5,14 @@ var initialize = function() {
   setTimeZone.init()
   Message.init()
   Signin.init()
-  // switcher.init()
- 
-  skrollr.init({
-  smoothScrolling: false,
-  mobileDeceleration: 0.004
- });
+  if ($(window).width() > 767) {
+    skrollr.init({
+    smoothScrolling: false,
+    mobileDeceleration: 0.004
+    });
+   } 
 
-  userToggle.init()
+  userToggle.init();
 }
 
 var setTimeZone = {
@@ -24,3 +24,15 @@ var setTimeZone = {
 
 $(document).ready(initialize)
 $(document).on('page:load',initialize)
+
+$(window).on('resize', function () {
+    if ($(window).width() <= 767) {
+      skrollr.init().destroy(); // skrollr.init() returns the singleton created above
+    }
+    if ($(window).width() >= 767) {
+       skrollr.init({
+        smoothScrolling: false,
+        mobileDeceleration: 0.004
+        });
+    }
+  });
