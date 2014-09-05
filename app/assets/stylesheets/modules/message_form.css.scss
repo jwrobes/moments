@@ -31,22 +31,72 @@ $form-border-color: $light-gray;
 	color: $dark-gray;
 }
 
-.drop-shadow {
-    background: #9479fa;
+
+@media screen and (device-aspect-ratio: 40/71) {
+
+	.form-message-label {
+		font-size: .95em;
+	}
+
+	.message-form {
+		border-bottom: 2px !important;
+		min-height: 175px;
+	}
+
+	.message-container {
+		min-height: 94px;
+		font-size: 1.1em;
+	}
+
+	.message_input > input {
+		margin: 0;
+	}
+
 }
+
+
+@media screen and (device-aspect-ratio: 2/3) {
+
+	.form-message-label {
+		font-size: .95em;
+	}
+
+	.message-form {
+		border-bottom: 2px !important;
+		min-height: 175px;
+	}
+
+	.message-container {
+		min-height: 55px;
+		font-size: .9em;
+	}
+
+	.message_input > input {
+		margin: 0;
+	}
+
+}
+
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { 
+
+	.form-message-label {
+		font-size: 1.1em;
+	}
+
+	.message-form {
+		border-bottom: 2px !important;
+		min-height: 270px;
+	}
+
+	.message-container {
+		min-height: 130px;
+		font-size: 1.3em;
+	}
+
+	.message_input > input {
+		margin: 0;
+	}
  
-.drop-shadow.top {
-    box-shadow: 0 -4px 2px -2px rgba(0,0,0,0.4)
-}
- 
-.drop-shadow.right {
-    box-shadow: 4px 0 2px -2px rgba(0,0,0,0.4)
-}
- 
-.drop-shadow.bottom {
-    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4)
-}
- 
-.drop-shadow.left {
-    box-shadow: -4px 0 2px -2px rgba(0,0,0,0.4)
-}
+} 
