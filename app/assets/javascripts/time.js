@@ -8,9 +8,16 @@ var Time = {
 	},
 	appendTime: function (e,data) {
 	 if (data.success) {
-  		$('#start_time').html(data.start_time);
-			$('#end_time').html(data.end_time);
-			FlashErrors.clearErrors();
+	 	
+	 		if ($('#start_time').length === 0) {
+ 				$('.js-start-time').html('Your moments will start at <span class="time-form-highlight" id="start_time">' + data.start_time + '</span>')
+ 				$('.js-end-time').html('Your moments will start at <span class="time-form-highlight" id="end_time">' + data.end_time + '</span>')
+	 		}
+	 		else {
+	 			$('#start_time').html(data.start_time);
+				$('#end_time').html(data.end_time);
+	 		}
+  		FlashErrors.clearErrors();
 			if (data.start_time != "" && data.end_time != "") {
 				$('.form-toggle-moments').show();	
 			}
@@ -44,7 +51,8 @@ var Time = {
 	},
 	appendError: function (e,data) {
 		console.log(data);
-	}
+	},
+
 }
 
 
