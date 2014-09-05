@@ -1,13 +1,11 @@
-<div class="form">
+<div class="form message-form">
 	<div class="moment_message">
 		<h4 class="form-message-label">Your Reminder Message</h4>
-		<h3>"<span id="message-text"><%=current_user.message%></span>"</h3>
-		<br>
-	</div>
+		<div class="message-container">"<span id="message-text"><%=current_user.message%></span>"</div>
+		</div>
 	<div id="message_input">
 		<%=form_tag('/users/message', method: 'POST', remote: true) do |f| %>
 			<input type="textbox"  class="form-control" name="message_body" placeholder="Customize Your Message...">
-			<br>
 			<button type="submit" class="button button-large button-highlight">CHANGE MESSAGE</button>
 		<% end %>
 	</div>	 

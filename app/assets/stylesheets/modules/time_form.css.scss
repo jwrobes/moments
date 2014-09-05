@@ -36,14 +36,83 @@ $form-border-color: $light-gray;
 	display: none;
 }
 
-@media screen and (max-width: 480px) {
 
-.form-label {
-	font-size: 1.2em;
+@media screen and (device-aspect-ratio: 40/71) {
+
+	.form {
+		text-align: center;
+		padding: 5px;
+		margin: 7px;
+	}
+
+	.form-time {
+		min-height: 210px;
+	}
+
+	.form-label {
+		font-size: 1em;
+		padding: 5px;
+	}
+
+	label {
+		margin-bottom: 3px !important;
+	}
+
+	.button-large {
+		font-size: 14px !important;
+		margin: 15px 0px 4px 0px;
+	}
+
 }
 
-.form {
-	text-align: center;
-}
+@media screen and (device-aspect-ratio: 2/3) {
+
+	.form-label {
+		font-size: .95em;
+		padding: 4px;
+	}
+
+		.form {
+		text-align: center;
+		margin: 5px;
+		padding: 5px;
+	}
+
+	label {
+			margin-bottom: 3px !important;
+		}
+
+	.button-large {
+			padding: 8px 10px !important;
+			font-size: 14px !important;
+			margin: 6px 0px;
+	}
 
 }
+
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { 
+
+	.form {
+		text-align: center;
+		margin: 11px 5px;
+		padding: 5px;
+	}
+
+	.form-label {
+		font-size: 1.1em;
+		padding: 4px;
+	}
+
+	label {
+			// margin-bottom: 3px !important;
+		}
+
+	.button-large {
+			// padding: 8px 10px !important;
+			// font-size: 14px !important;
+			margin: 14px 0px;
+	}
+ 
+} 

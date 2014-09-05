@@ -2,3 +2,21 @@
 .form-toggle-moments {
 	display: none;
 }
+
+@media screen and (max-width: 480px) {
+	
+	.form-toggle-moments {
+		text-align: center;
+	}	
+
+	.form-toggle-moments > h3 {
+		display: inline-block;
+		margin: 8px;
+
+	}
+
+	.bootstrap-switch {
+	margin-left: 15px !important;
+
+}
+}

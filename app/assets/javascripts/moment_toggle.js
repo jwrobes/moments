@@ -39,7 +39,7 @@ var userToggle = {
 		return start_time > 0 && end_time > 0
 	},
 	checkforTimes: function () {
-			if ($('#start_time').html().length > 0 && $('#end_time').html().length > 0) {
+			if ($('#start_time').html()!= undefined && $('#start_time').html() != "" && $('#end_time').html() != undefined && $('#end_time').html() != "") {
 				$('.form-toggle-moments').show();
 			}
 	}

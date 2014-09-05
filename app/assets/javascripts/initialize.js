@@ -13,10 +13,6 @@ var initialize = function() {
  });
 
   userToggle.init()
-	// $momentSwitch = new ToggleSwitch(document.getElementById('cb'), 'ON', 'OFF');
-	// if (document.getElementById('cb').classList.contains("on")) {
-	// 	$momentSwitch.on()
-	// }
 }
 
 var setTimeZone = {
