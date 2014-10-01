@@ -1,6 +1,7 @@
 
 
 var initialize = function() {
+  skrollr.init().destroy();
 	Time.init()
   setTimeZone.init()
   Message.init()
@@ -23,6 +24,7 @@ var setTimeZone = {
 }
 
 $(document).ready(initialize)
+
 $(document).on('page:load',initialize)
 
 $(window).on('resize', function () {
