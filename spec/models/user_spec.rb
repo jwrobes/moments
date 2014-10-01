@@ -6,15 +6,35 @@ describe User do
     it { should have_many(:moments )}
   end
 
-  context "can create daily times for user moments" do
-  
-  	it "has a valid factory" do
-  		FactoryGirl.build(:user).should be_valid
-  	end
 
-    	it "builds 5 times for moments" do
+  it "has a valid factory" do
+      FactoryGirl.build(:user).should be_valid
+    end
+
+  context "user is in New York Time Zone" do
+  
+    it "can return a UTC time of 13 hours for a local start time of 9:00" do
+      user = FactoryGirl.build(:user)
+      expect(user.local_start_time_in_utc.hour).to eq(13)
+    end
+
+    it "can return a UTC time of 14 hours for a local start time of 10:00" do
+      user = FactoryGirl.build(:user)
+      expect(user.local_end_time_in_utc.hour).to eq(14)
+    end
+
+  end
+
+  context " user with start and end time" do
+
+    it "can create a window of time  for moments in seconds" do 
+      user = FactoryGirl.build(:user)
+      seconds = (60*60)/5
+      expect(user.moments_window_time).to eq(seconds)
+    end
+
+   it "builds 5 times for moments" do
   		user = FactoryGirl.create(:user, upcased: true)
-      puts user.start_time
   		times = user.generate_random_daily_moment_times
   		expect(times.length).to eq 5
   	end

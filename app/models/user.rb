@@ -9,17 +9,12 @@ class User < ActiveRecord::Base
   # validates :phone_number, presence: true
   validates_plausible_phone :phone_number, :presence => true
 
-  validate :must_have_end_time_with_start_time, :must_have_start_time_with_end_time, :end_time_cannont_be_before_start_time
+  validate :must_have_end_time_with_start_time, :must_have_start_time_with_end_time, :end_time_cannont_be_before_start_time, :must_have_times_for_moments_on
 
-  
- #  validates_plausible_phone :phone, :with => /\A\+\d+/
-	# validates_plausible_phone :phone, :without => /\A\+\d+/
-	# validates_plausible_phone :phone, :presence => true, :with => /\A\+\d+/
-
+ 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- # attr_accessible :time_zone, :utc_local_midnight
  	has_many :moments  
 
   def end_time_cannont_be_before_start_time
@@ -36,42 +31,74 @@ class User < ActiveRecord::Base
 
   def must_have_end_time_with_start_time
     if (start_time != nil && start_time != "") && (end_time == nil || end_time == "")
-      # binding.pry
       errors.add(:start_time, "Can't have Start Time without End Time")
     end    
   end
 
   def must_have_start_time_with_end_time
     if (end_time != nil && end_time != "") && (start_time == nil || start_time == "")
-      # binding.pry
       errors.add(:bad_times, "Can't have End Time without Start Time")
     end    
   end
 
-  # def must_have_both_start_and_end_time
-  #   if (start_time.length == nil && end_time.length != nil) || (start_time.length != nil && end_time.length == nil)
-  #     binding.pry
-  #     errors.add(:start_time, "Can't have Start Time without End Time")
-  #   end    
-  # end
+  def must_have_times_for_moments_on
+    if moments_on && user_times_set? == false
+      errors.add(:moments_on, "Can't turn Moments On without Start and End Time")
+    end
+  end
 
+  def local_start_time_in_utc
+    Time.zone = time_zone
+    TZInfo::Timezone.get(time_zone).local_to_utc(Time.zone.parse(start_time))
+  end
 
-  def moments_window_time(start_time, end_time)
-    total_seconds =  end_time - start_time
-    moment_window = total_seconds/5
+  def local_end_time_in_utc
+    Time.zone = self.time_zone
+    TZInfo::Timezone.get(self.time_zone).local_to_utc(Time.zone.parse(self.end_time))
+  end
+
+  def current_date_for_local_time_zone
+    Date.parse(TZInfo::Timezone.get(self.time_zone).now.to_s)
+  end
+
+  def moments_window_time
+    total_seconds =  local_end_time_in_utc - local_start_time_in_utc
+    moment_window = total_seconds/number_of_moments
   end
 
   def generate_random_daily_moment_times
-    tc = TimeConversion.new(self)
-    utc_start_time = tc.local_start_time_in_utc
-    utc_end_time = tc.local_end_time_in_utc
-    window = self.moments_window_time(utc_start_time, utc_end_time)
+    moments_start_time = local_start_time_in_utc
+    window = moments_window_time
     moment_times = []
-    (1..5).each do 
-      moment_times << (utc_start_time + rand(1..window)).change(:sec => 0)
-      utc_start_time = utc_start_time + window
+    number_of_moments.times do 
+      moment_times << (moments_start_time + rand(1..window)).change(:sec => 0)
+      moments_start_time += window
     end
-    moment_times.reject! {|time| time < Time.zone.now }
-    moment_times
+    remove_times_before_current_time(moment_times)
   end
+
+  def remove_times_before_current_time(times)
+    times.reject {|time| time < Time.zone.now }
+  end
+
+  def no_moments_today?
+    self.moments.where("date = ?", current_date_for_local_time_zone).count == 0
+  end
+
+  def missing_moments?
+    self.moments.where("date = ?", current_date_for_local_time_zone).count < 5
+  end
+
+  def self.with_moments_on
+    self.where("moments_on = ? AND start_time != ? AND time_zone != ?", true, nil, nil)
+  end
+
+  def self.missing_scheduled_moments_today
+    self.with_moments_on - self.users_with_moments_scheduled_today
+  end
+
+  def self.users_with_moments_scheduled_today
+    Moment.get_moments_scheduled_for_today.map { |moment| moment.user}.uniq
+  end
+
 end

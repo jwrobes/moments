@@ -9,7 +9,6 @@ var Message = {
 		$('#message-text').html(data.message)
 	},
 	appendError: function (e,data) {
-		debugger
 		console.log(data)
 	}
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730161007) do
+ActiveRecord::Schema.define(version: 20141001052552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20140730161007) do
     t.string   "phone_number"
     t.string   "time_zone"
     t.integer  "utc_local_midnight"
-    t.boolean  "moments_on",             default: true
+    t.boolean  "moments_on",             default: false
     t.text     "message",                default: "It's time to take a moment."
+    t.integer  "number_of_moments",      default: 5
+    t.integer  "num_moments",            default: 5
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
