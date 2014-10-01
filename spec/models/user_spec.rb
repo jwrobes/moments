@@ -30,7 +30,7 @@ describe User do
     it "can create a window of time  for moments in seconds" do 
       user = FactoryGirl.build(:user)
       seconds = (60*60)/5
-      expect(user.moments_window_time).to eq(seconds)
+      expect(user.moments_window).to eq(seconds)
     end
 
    it "builds 5 times for moments" do
@@ -39,30 +39,29 @@ describe User do
   		expect(times.length).to eq 5
   	end
 
-  	# it "the first time is within the first fifth of the day" do
-  	# 	user = FactoryGirl.build(:user, with_hours: true)
-  	# 	generate_random_daily_moment_times
-  	# 	expect(times.first).to be >= user.start_time
-  	# 	expect(times.first).to be < Time.zone.parse("13:12")
-  	# end
+  	it "the first time is within the first fifth of the day" do
+  		user = FactoryGirl.build(:user)
+  		times = user.generate_random_daily_moment_times
+  		expect(times.first).to be >= user.start_time
+  		expect(times.first).to be < Time.zone.parse("13:12")
+  	end
 
-  	#  it "the second time is within the second fifth of the day" do
-  	# 	user = FactoryGirl.build(:user)
-  	# 	times = user.generate_random_daily_moment_times
-  	# 	expect(times[1]).to be >= Time.zone.parse("13:12")
-  	# 	expect(times[1]).to be < Time.zone.parse("13:24")
-  	# end
+  	it "the second time is within the second fifth of the day" do
+  		user = FactoryGirl.build(:user)
+  		times = user.generate_random_daily_moment_times
+  		expect(times[1]).to be >= Time.zone.parse("13:12")
+  		# expect(times[1]).to be < Time.zone.parse("13:24")
+  	end
 
 
-  	#  it "the third time is within the third fifth of the day" do
+  	# it "the third time is within the third fifth of the day" do
   	# 	user = FactoryGirl.build(:user)
   	# 	times = user.generate_random_daily_moment_times
   	# 	expect(times[2]).to be >= Time.zone.parse("13:24")
   	# 	expect(times[2]).to be < Time.zone.parse("13:36")
   	# end
 
-
-  	#  it "the fourth time is within the fourth fifth of the day" do
+  	# it "the fourth time is within the fourth fifth of the day" do
   	# 	user = FactoryGirl.build(:user)
   	# 	times = user.generate_random_daily_moment_times
   	# 	expect(times[3]).to be >= Time.zone.parse("13:36")
