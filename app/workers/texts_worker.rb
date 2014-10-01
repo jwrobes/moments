@@ -4,6 +4,7 @@ class TextsWorker
 
 	def self.perform
 		texts_to_send = Moment.get_to_send
+			binding.pry
 			TextsSender.new(texts_to_send).send
 	end
 
