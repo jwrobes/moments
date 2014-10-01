@@ -1,4 +1,3 @@
-require 'pry'
 class MomentsScheduler
 
 @queue = :moments_scheduler

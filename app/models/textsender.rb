@@ -24,5 +24,4 @@ class TextsSender
  		end
 	end
 
-
 end
