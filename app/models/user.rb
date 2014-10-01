@@ -99,7 +99,6 @@ class User < ActiveRecord::Base
   end
 
   def no_moments_today?
-    binding.pry
     self.moments.where("date = ?", current_date_for_local_time_zone).count == 0
   end
 
@@ -108,7 +107,6 @@ class User < ActiveRecord::Base
   def build_missing_moments_for_today
     if moments_on && missing_moments?
       generate_random_daily_moment_times.each do |time|
-        binding.pry
         self.moments << Moment.create({time: time, date: current_date_for_local_time_zone, message: message, phone_number: phone_number, user_time_zone: time_zone})
        end   
     end
