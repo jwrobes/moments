@@ -1,19 +1,12 @@
-
-
 var initialize = function() {
   skrollr.init().destroy();
-	Time.init()
-  setTimeZone.init()
-  Message.init()
-  Signin.init()
-  if ($(window).width() > 767) {
-    skrollr.init({
-    smoothScrolling: false,
-    mobileDeceleration: 0.004
-    });
-   } 
-
+	TimePicker.init();
+  setTimeZone.init();
+  Message.init();
+  Signin.init();
+  setSkrollr.init();
   userToggle.init();
+  setTimeZone.init();
 }
 
 var setTimeZone = {
@@ -23,18 +16,28 @@ var setTimeZone = {
 	}
 }
 
-$(document).ready(initialize)
-
-$(document).on('page:load',initialize)
-
-$(window).on('resize', function () {
-    if ($(window).width() <= 767) {
-      skrollr.init().destroy(); // skrollr.init() returns the singleton created above
-    }
-    if ($(window).width() >= 767) {
-       skrollr.init({
+var setSkrollr = {
+  init: function() {
+    if ($(window).width() > 767) {
+      skrollr.init({
+      smoothScrolling: false,
+      mobileDeceleration: 0.004
+      });
+    };
+    $(document).on('page:load',initialize)
+    $(window).on('resize', function () {
+      if ($(window).width() <= 767) {
+        skrollr.init().destroy(); 
+      }
+      if ($(window).width() >= 767) {
+        skrollr.init({
         smoothScrolling: false,
         mobileDeceleration: 0.004
         });
-    }
-  });
+      }
+    });
+  }
+}
+
+$(document).ready(initialize)
+

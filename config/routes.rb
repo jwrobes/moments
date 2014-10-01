@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
 	root to: 'landing_page#index'
 
-  # devise_for :users, :controllers => { :registrations => 'registrations'}
-
-
   devise_for :users, :controllers => { :sessions => 'sessions', :registrations => 'registrations' }
   
   resources :users, only: [:show] do
@@ -20,9 +17,5 @@ Rails.application.routes.draw do
   post "users/message" => 'users#message'
 
   put 'users/toggle' => 'users#toggle'
-
-	post "twilio/voice" =>'twilio#voice'
-
-	post "twilio/send_sms" => "twilio#send_sms"  
 
 end

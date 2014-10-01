@@ -1,5 +1,5 @@
 
-var Time = {
+var TimePicker = {
 	init: function () {
 		$('#time-setups').on('ajax:success', this.appendTime);
 		$('#time-setups').on('ajax:error', this.appendError);

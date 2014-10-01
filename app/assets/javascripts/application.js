@@ -19,7 +19,6 @@
 
 //= require pickadate/picker 
 //= require pickadate/picker.time 
-//= require ToggleSwitch.js
 //= require OutsideEvents.js
 //= require Skrollr.js
 //= require Toggle.js
