@@ -10,5 +10,10 @@ belongs_to :user
 		end
 	end
 
+	def self.get_to_send
+		moments_to_send = Moment.where("time <= ? AND sent = ?", UTCTimeNowNoSeconds.get, false)
+		moments_to_send.uniq! {|moment| moment.user_id}
+	end	
+
 end
 
