@@ -3,15 +3,16 @@ var momentsActivateController = {
 		url: '/users/toggle',
 		type: 'PUT'
 	},
-	activateToggleDone: function () {
+	activateToggleDone: function (errors) {
 			if (data.moments_on) {
-				console.log("turning it on")
+				FlashErrors.clearToggleErrors();
 				$('#cb').removeClass('off')
 				$('#cb').addClass('on')
 				$momentSwitch.on()
 			}
 			else {
-				console.log("turning it off")
+				FlashErrors.clearToggleErrors();
+				FlashErrors.insertMomentsToggleError(data.errors)
 				$('#cb').removeClass('on')
 				$('#cb').addClass('off')
 				$momentSwitch.off()

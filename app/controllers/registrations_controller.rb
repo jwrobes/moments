@@ -5,15 +5,11 @@ class RegistrationsController < Devise::RegistrationsController
 	def create
 		params.permit!
 		build_resource(params["user"])
-		puts "we are creating something"
-		puts resource
 		if resource.save
 			if resource.active_for_authentication?
 				set_flash_message :notice, :signed_up if is_navigational_format?
-				# respond_with resource, location: after_sign_up_path_for(resource)
-					sign_up(resource_name,resource)
-					# binding.pry
-					sign_in_and_redirect(resource_name, resource)
+				sign_up(resource_name,resource)
+				sign_in_and_redirect(resource_name, resource)
 			end
 		else
 			clean_up_passwords resource

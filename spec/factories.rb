@@ -11,6 +11,9 @@ FactoryGirl.define do
 		password_confirmation {"fooobarr"}
 		time_zone {"America/New_York"}
 		utc_local_midnight {4}
+		moments_on false
+		start_time "09:00"
+		end_time "10:00"
 	
 		after(:create) do |user, evaluator|
 			if evaluator.upcased

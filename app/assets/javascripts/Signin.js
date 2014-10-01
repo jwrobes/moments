@@ -46,12 +46,10 @@ Signin = {
 	showSignInModule: function(){
 		event.preventDefault();
 		$('.sign-up-overlay').removeClass('is-hidden');
-		//bind event click event to entire body
 		$('body').on('click.hideSignIn', this.hideSignIn)
 		this.bindAllSignInEvents();
 	},
 	hideSignIn: function(e){
-		//hide module if event bound to overlay
 		if (e.target.className === "sign-up-overlay") {
 			FlashErrors.clearErrors();
 			$('.signin-select').removeClass('is-hidden').css('display','inline-block');
@@ -111,6 +109,15 @@ FlashErrors = {
 	insertEndTimeError: function(errors) {
 	$('.user-end_time-errors').html(errors[0]);
 	$('.user-end_time-errors').show();
-}
+},
+	insertMomentsToggleError: function(errors) {
+		$('.moments-toggle-errors').html(errors[0]);
+		$('.moments-toggle-errors').show();
+	},
+	clearToggleErrors: function(){
+		$('.moments-toggle-errors').html("");
+		$('.moments-toggle-errors').hide();
+	},
+
 }
 

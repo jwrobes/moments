@@ -42,7 +42,7 @@ end
 before_filter :configure_devise_params, if: :devise_controller?
   def configure_devise_params
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:first_name, :last_name, :start_time, :end_time, :email, :password, :password_confirmation, :phone_number, :time_zone, :utc_local_midnight)
+      u.permit(:first_name, :last_name, :start_time, :end_time, :email, :password, :password_confirmation, :phone_number, :time_zone, :utc_local_midnight, :num_moments)
     end
   end
 

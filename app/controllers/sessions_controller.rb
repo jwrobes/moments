@@ -1,7 +1,6 @@
 require 'pry'
 class SessionsController < Devise::SessionsController
 	def create
-		debugger
       resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
       if resource 
   	  		sign_in_and_redirect(resource_name, resource)
